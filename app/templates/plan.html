@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<div id="header"></div>
+    <div class="contentTitle">Welcome to Your Daily Planner</div>
+    <div class="pageContent">
+    <p>How much time to do work do you have today?</p>
+    <form>
+        <input type="text" name="taskname"> hours
+        <input type="submit" value="Submit">
+    </form>
+    <h2>We recommend you do these tasks today:</h2>
+    <table style="width:100%">
+        <thead>
+            <th>Task</th>
+            <th colspan="2">Estimated time</th>
+        </thead>
+        <tbody>        
+            <tr>
+                <td>Do nothing</td>
+                <td>5 hours</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}
