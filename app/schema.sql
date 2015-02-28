@@ -14,6 +14,7 @@ create table tasks (
 
 drop table if exists subtasks;
 create table subtasks (
+  subtasks_id integer primary key autoincrement,
   tasks_id integer not null,
   name text not null,
   time text not null
