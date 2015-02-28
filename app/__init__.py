@@ -1,13 +1,15 @@
-from flask import Flask
-
+from flask import Flask, request, session, g, redirect, url_for, \
+     abort, render_template, flash
+    
 app = Flask(__name__)
 app.config.from_object('config')
 
 @app.route("/")
-def hello():
-    return "Hello World!"
+def welcome():
+    return render_template('index.html')
 
-if __name__ == "__main__":
-    app.run()
+@app.route('/plan')
+def plan():
+    return render_template('plan.html')
 
 from app import views
