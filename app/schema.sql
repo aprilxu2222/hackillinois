@@ -12,14 +12,6 @@ create table tasks (
   time text not null
 );
 
-drop table if exists subtasks;
-create table subtasks (
-  subtasks_id integer primary key autoincrement,
-  tasks_id integer not null,
-  name text not null,
-  time text not null
-);
-
 drop table if exists daily;
 create table daily (
   day date primary key,
