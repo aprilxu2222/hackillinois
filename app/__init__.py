@@ -5,11 +5,15 @@ app = Flask(__name__)
 app.config.from_object('config')
 
 @app.route("/")
-def welcome():
+def index():
     return render_template('index.html')
 
-@app.route('/plan')
-def plan():
-    return render_template('plan.html')
+@app.route('/addtask')
+def addtask():
+    return render_template('addtask.html')
+
+@app.route('/today')
+def today():
+    return render_template('today.html')
 
 from app import views
