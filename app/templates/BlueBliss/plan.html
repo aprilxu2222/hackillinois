@@ -1,3 +1,6 @@
+<!--
+You may use this in any way, on any site, all we ask is that you please keep the link(s) crediting the author.   Though this is not mandatory, it is certainly appreciated.
+ -->
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -5,6 +8,16 @@
 	<title>Blue Bliss by Bryant Smith</title>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 	<link rel="stylesheet" type="text/css" href="bluebliss.css" />
+  <style>
+  table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  th, td {
+    padding: 5px;
+    text-align: left;    
+  }
+  </style>
 </head>
 <body>
 <div id="mainContentArea">
@@ -19,19 +32,24 @@
         
         <div id="blueBox"> 
           <div id="header"></div>
-          <div class="contentTitle">Welcome to our Daily Planner</div>
+          <div class="contentTitle">Welcome to out Daily Planner</div>
             <div class="pageContent">
-                <h1>Add a task!</h1>
-                <form>
-                    Task Name:<br>
-                    <input type="text" name="taskname">
-                    <br>
-                    Task Deadline:<br>
-                    <input type="text" name="deadline">
-                    <br>
-                    Add a Subtask:
-                    <input type="submit" value="Submit">
-                </form>
+              <p>How much time do you have today?</p>
+              <form>
+                  <input type="text" name="taskname">hrs
+                  <input type="submit" value="Submit">
+              </form>
+              <h2>Result:</h2>
+                <table style="width:100%">
+                  <tr>
+                    <th>Task</th>
+                    <th colspan="2">Estimated time</th>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </table>
             </div>
             <div id="footer"><a href="http://www.aszx.net">web development</a> by <a href="http://www.bryantsmith.com">bryant smith</a></div>
         </div>
