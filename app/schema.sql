@@ -9,7 +9,7 @@ create table tasks (
   id integer primary key autoincrement,
   name text not null,
   deadline date not null,
-  time text not null
+  duration text not null
 );
 /*
 drop table if exists daily;

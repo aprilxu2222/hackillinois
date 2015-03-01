@@ -26,30 +26,15 @@ def index():
             session['logged_in'] = True
             flash('You were logged in')
             return redirect(url_for('show_entries'))
-    return render_template('index.html', error=error)
+    return render_template('index.html', title='Welcome', error=error)
 
 @app.route('/addtask')
 def addtask():
-    return render_template('addtask.html')
+    return render_template('addtask.html', title='Add Task')
 
 @app.route('/today')
 def today():
-    return render_template('today.html')
-
-'''@app.route('/login', methods=['GET', 'POST'])
-def login():
-    error = None
-    if request.method == 'POST':
-        if request.form['username'] != app.config['USERNAME']:
-            error = 'Invalid username'
-        elif request.form['password'] != app.config['PASSWORD']:
-            error = 'Invalid password'
-        else:
-            session['logged_in'] = True
-            flash('You were logged in')
-            return redirect(url_for('show_entries'))
-    return render_template('login.html', error=error)
-    '''
+    return render_template('today.html', title='Today\'s Tasks')
 
 @app.route('/logout')
 def logout():

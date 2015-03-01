@@ -1,24 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
-<div id="blueBox"> 
-    <div id="header">
-    </div>
-    <div class="contentTitle">
-        Welcome to our Daily Planner
-    </div>
+    <div id="header"></div>
+    <div class="contentTitle">Welcome to Your Daily Planner</div>
     <div class="pageContent">
-      <p>This web application allows you to type out a list of your tasks for two weeks, and we will plan your days for you. It's perfect for people who have trouble prioritizing their everyday to-do lists. Say goodbye to procrastination!</p>
+        <p>This web application allows you to type out a list of your tasks for two weeks, and we will plan your days for you. It's perfect for people who have trouble prioritizing their everyday to-do lists. Say goodbye to procrastination!</p>
+        <h1>Login</h1>
+        {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
+        <form action="{{ url_for('index') }}" method=post>
+              Username:<br>
+              <input type="text" name="username">
+              <br>
+              Password:<br>
+              <input type="password" name="password">
+              <br>
+              <input type="submit" value="Login">
+            </dl>
+        </form>
     </div>
-     <h2>Login</h2>
-	  {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
-	  <form action="{{ url_for('index') }}" method=post>
-	    <dl>
-	      <dt>Username:
-	      <dd><input type="text" name="username">
-	      <dt>Password:
-	      <dd><input type="password" name="password">
-	      <dd><input type="submit" value="Login">
-	    </dl>
-	</form>
 
 {% endblock %}
