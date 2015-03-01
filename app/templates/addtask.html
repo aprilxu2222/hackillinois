@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 <div id="header"></div>
-  <div class="contentTitle">Welcome to our Daily Planner</div>
+  <div class="contentTitle">Enter Your Tasks Here:</div>
     <div class="pageContent">
-        <h1>Add a task!</h1>
+        <h1>{{ title }}</h1>
         <form>
             Task Name:<br>
             <input type="text" name="taskname">
@@ -11,7 +11,9 @@
             Task Deadline:<br>
             <input type="text" name="deadline">
             <br>
-            Add a Subtask:
-            <input type="submit" value="Submit">
+            Estimated completion time:<br>
+            <input type="number" name="deadline"> hours
+            <br>
+            <input type="submit" value="Add Task">
         </form>
 {% endblock %}
