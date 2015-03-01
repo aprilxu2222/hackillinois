@@ -11,10 +11,10 @@ create table tasks (
   deadline date not null,
   time text not null
 );
-
+/*
 drop table if exists daily;
 create table daily (
   day date primary key,
   task_name text not null,
   task_time text not null,
-);
+);*/
