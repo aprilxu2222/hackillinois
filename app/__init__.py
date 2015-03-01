@@ -1,4 +1,4 @@
-#import sqlite3
+import sqlite3
 from flask import Flask, request, session, g, redirect, url_for, \
      abort, render_template, flash
 
@@ -12,7 +12,7 @@ USERNAME = 'admin'
 PASSWORD = 'default'
     
 app = Flask(__name__)
-app.config.from_object('config')
+app.config.from_object(__name__)
 
 app.config.from_envvar('FLASKR_SETTINGS', silent=True)
 
@@ -49,8 +49,20 @@ def index():
             return redirect(url_for('show_entries'))
     return render_template('index.html', title='Welcome', error=error)
 
-@app.route('/addtask')
+@app.route("/")
+def show_entries():
+    cur = g.db.execute('select name, duration from tasks')
+    entries = [dict(title=row[0], text=row[1]) for row in cur.fetchall()]
+    return render_template('show_entries.html', entries=entries)
+
+@app.route('/addtask', methods=['POST'])
 def addtask():
+    if not session.get('logged_in'):
+        abort(401)
+    g.db.execute('insert into entries (title, text) values (?, ?)',
+                 [request.form['title'], request.form['text']])
+    g.db.commit()
+    flash('New entry was successfully posted')
     return render_template('addtask.html', title='Add Task')
 
 @app.route('/today')

@@ -21,6 +21,13 @@ You may use this in any way, on any site, all we ask is that you please keep the
             <div class="link"><a href={{ url_for('today') }}>Today</a></div>
         </div>
         <div id="blueBox"> 
+            <div class=metanav>
+              {% if not session.logged_in %}
+                <a href="{{ url_for('login') }}">log in</a>
+              {% else %}
+                <a href="{{ url_for('logout') }}">log out</a>
+              {% endif %}
+              </div>
             {% block content %}        
             {% endblock %}
         </div>
