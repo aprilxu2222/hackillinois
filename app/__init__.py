@@ -36,7 +36,7 @@ def teardown_request(exception):
         db.close()
         
 @app.route("/", methods=['GET', 'POST'])
-def index():
+def login():
     error = None
     if request.method == 'POST':
         if request.form['username'] != app.config['USERNAME']:
@@ -45,24 +45,27 @@ def index():
             error = 'Invalid password'
         else:
             session['logged_in'] = True
-            flash('You were logged in')
-            return redirect(url_for('show_entries'))
-    return render_template('index.html', title='Welcome', error=error)
+            flash('You are logged in')
+            return redirect(url_for('today'))
+    return render_template('login.html', title='Welcome', error=error)
 
-@app.route("/")
+@app.route("/show_entries")
 def show_entries():
     cur = g.db.execute('select name, duration from tasks')
     entries = [dict(title=row[0], text=row[1]) for row in cur.fetchall()]
-    return render_template('show_entries.html', entries=entries)
+    return render_template('today.html', entries=entries)
 
-@app.route('/addtask', methods=['POST'])
+@app.route('/', methods=['GET','POST'])
 def addtask():
-    if not session.get('logged_in'):
-        abort(401)
-    g.db.execute('insert into entries (title, text) values (?, ?)',
-                 [request.form['title'], request.form['text']])
+    #if not session.get('logged_in'):
+     #   abort(401)
+    g.db.execute('insert into tasks (name, deadline, duration) values (?, ?, ?)', [request.form['name'], request.form['deadline'], request.form['duration']])
     g.db.commit()
     flash('New entry was successfully posted')
+    return render_template('addtask.html', title='Add Task')
+
+@app.route('/addtaskhtml')
+def addtaskhtml():
     return render_template('addtask.html', title='Add Task')
 
 @app.route('/today')
@@ -73,6 +76,6 @@ def today():
 def logout():
     session.pop('logged_in', None)
     flash('You were logged out')
-    return redirect(url_for('show_entries'))
+    return redirect(url_for('login'))
 
 from app import views

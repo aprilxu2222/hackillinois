@@ -16,24 +16,19 @@ You may use this in any way, on any site, all we ask is that you please keep the
             GET SHIT DONE
         </div>        
         <div id="linkGroup">
-            <div class="link"><a href={{ url_for('index') }}>Home</a></div>
-            <div class="link"><a href={{ url_for('addtask') }}>Add task</a></div>
+            <div class="link"><a href={{ url_for('login') }}>Home</a></div>
+            <div class="link"><a href={{ url_for('addtaskhtml') }}>Add task</a></div>
             <div class="link"><a href={{ url_for('today') }}>Today</a></div>
         </div>
-        <div id="blueBox"> 
-            <div class=metanav>
-              {% if not session.logged_in %}
-                <a href="{{ url_for('login') }}">log in</a>
-              {% else %}
-                <a href="{{ url_for('logout') }}">log out</a>
-              {% endif %}
-              </div>
-            {% block content %}        
-            {% endblock %}
+        <div id="blueBox">
+            {% block content %}            
+            {% endblock %}            
         </div>
-    <div id="footer"><a href="http://www.aszx.net">web development</a> 
-        by <a href="http://www.bryantsmith.com">bryant smith</a>                 
     </div>
+</div>
+<div id="footer"><a href="http://www.aszx.net">web development</a> 
+        by <a href="http://www.bryantsmith.com">bryant smith</a>                 
+</div>
 </div>
 </div>
 </body>

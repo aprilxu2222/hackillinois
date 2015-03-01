@@ -1,19 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
-<div id="header"></div>
-  <div class="contentTitle">Enter Your Tasks Here:</div>
-    <div class="pageContent">
-        <h1>{{ title }}</h1>
-        <form action="{{ url_for('addtask') }}">
-            Task Name:<br>
-            <input type="text" name="taskname">
-            <br>
-            Task Deadline:<br>
-            <input type="text" name="deadline">
-            <br>
-            Estimated completion time:<br>
-            <input type="number" name="deadline"> hours
-            <br>
-            <input type="submit" value="Add Task">
-        </form>
+
+    <div id="header"></div>
+      <div class="contentTitle">Enter Your Tasks Here:</div>
+        <div class="pageContent">
+            <h1>{{ title }}</h1>
+            <form method="post" action="addtask" name="addtask">
+                Task Name:<br>
+                <input type="text" name="name">
+                <br>
+                Task Deadline:<br>
+                <input type="date" name="deadline">
+                <br>
+                Estimated completion time:<br>
+                <input type="number" name="duration"> hours
+                <br>
+                <input type="submit" value="Add Task">
+            </form>
+        </div>
+
 {% endblock %}
